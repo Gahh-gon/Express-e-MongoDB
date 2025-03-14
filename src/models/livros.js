@@ -1,14 +1,14 @@
-import mongoose, { Types } from "mongoose";
+import mongoose from "mongoose";
 
 const livrosSchema = new mongoose.Schema({
-    id:{Type: mongoose.Types.ObjectId},
-    titulo: {Type: String, required: true},
-    autor: {Type: String},
-    editora:{Type: String},
-    preco:{Type: Number},
-    paginas: {Type: Number}
-},{versionKey:false})
+    id:{type: mongoose.Schema.Types.ObjectId},
+    titulo: {type: String, required:true},
+    autor: {type: String},
+    editora:{type: String},
+    preco:{type: Number},
+    paginas: {type: Number}
+},{versionKey:false});
 
-const livro = mongoose.model("livros",livrosSchema)
+const livro = mongoose.model("livros",livrosSchema);
 
 export default livro;
