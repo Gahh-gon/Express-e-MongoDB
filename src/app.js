@@ -14,13 +14,7 @@
  const app = express(); 
 app.use(express.json());
  
- 
- 
- app.get('/listLivros', async (req, res) =>{
-   const listaLivros = await livro.find({});
-   res.status(200).json(listaLivros)
-});
-app.get('/Livro/:id', (req, res) =>{
+ app.get('/Livro/:id', (req, res) =>{
    const id = buscarLivroId(req.params.id);
    res.status(200).json(livros[id])
 });
