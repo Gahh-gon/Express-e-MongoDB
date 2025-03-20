@@ -1,6 +1,6 @@
  import express from 'express';
  import connectDataBase from './config/dbConnect.js';
- import livro from './models/livros.js';
+import routes from './routes/index.js';
 
  const conexao = await connectDataBase();
   
@@ -12,15 +12,11 @@
    console.log("Conexão com o banco de dados estabelecida com sucesso");  // imprime no console a mensagem quando o server está rodando
  })
  const app = express(); 
-app.use(express.json());
+routes(app)
  
  app.get('/Livro/:id', (req, res) =>{
    const id = buscarLivroId(req.params.id);
    res.status(200).json(livros[id])
-});
-app.post('/listlivros', (req, res) =>{ 
-livros.push(req.body);
-res.status(201).send("livro cadastrado com sucesso")
 });
 
 app.put('/listlivros/:id', (req, res) =>{
