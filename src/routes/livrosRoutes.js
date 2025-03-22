@@ -3,7 +3,9 @@ import LivroController from '../controllers/livroController.js';
 
 const routes = express.Router();
 
-routes.get('/listLivros', LivroController.listarLivro);
+routes.get('/listLivros', LivroController.listarLivros);
+routes.get('/listLivros:id', LivroController.listarLivroPorId);
+routes.put('/listLivros:id', LivroController.AtualizarLivro)
 routes.post('/listlivros', LivroController.cadastrarLivro)
 
 export default routes;

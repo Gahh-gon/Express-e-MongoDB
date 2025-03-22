@@ -14,16 +14,7 @@ import routes from './routes/index.js';
  const app = express(); 
 routes(app)
  
- app.get('/Livro/:id', (req, res) =>{
-   const id = buscarLivroId(req.params.id);
-   res.status(200).json(livros[id])
-});
-
-app.put('/listlivros/:id', (req, res) =>{
-   const id = buscarLivroId(req.params.id);
-   livros[id].titulo = req.body.titulo;
-   res.status(200).json(livros[id])
-});
+ 
 app.delete("/listlivros/:id", (req,res)=>{
    const id = buscarLivroId(req.params.id);
    livros.splice(id, 1);
