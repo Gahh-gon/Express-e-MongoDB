@@ -13,7 +13,6 @@ static async listarLivros(req,res){
 static async listarLivroPorId(req,res){
     try{
         const id = req.params.id;
-      
         const LivroEncontr = await livro.findById(id);
         res.status(200).json({message:"Livro encotrando com sucesso",livro:LivroEncontr})
     }catch(err){
@@ -26,14 +25,13 @@ static async AtualizarLivro(req,res){
         const id = req.params.id;
       
      await livro.findByIdAndUpdate(id, req.body);
-        res.status(200).json({message:"Livro atualizado",livro:LivroEncontr})
+        res.status(200).json({message:"Livro atualizado"})
     }catch(err){
         res.status(500).json({message:`${err.message} - falha na atualização`})
     }
     
 };
 static async cadastrarLivro (req, res) { 
-    livro.push(req.body);
    
     try{
         const novoLivro = await livro.create(req.body)
@@ -41,6 +39,16 @@ static async cadastrarLivro (req, res) {
     }catch(erro){
         res.status(500).json({message:`${erro.message} - falha ao cadastrar livro`})
     }
+}
+static async deletarLivro(req,res){
+    try{
+        const id = req.params.id;
+        await livro.findByIdAndDelete(id)
+        res.status(200).json({message:"Livro removido com sucesso"});
+    }catch(err){
+        res.status(500).json({message:`${err.message} - falha ao remover livro`})
+    }
+   
 }
 
 }
